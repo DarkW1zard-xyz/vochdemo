@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Product {
+  id        String   @id @default(cuid())
+  name      String
+  description String?
+  category  String  @default("electronics")
+  brand     String
+  type      String
+  cpuBrand  String
+  cpu       String
+  ram       Int
+  storage   Int
+  gpuBrand  String
+  gpu       String
+  screen    Float
+  price     Int
+  availability String @default("in_stock")
+  rating    Float   @default(0)
+  popularity Int    @default(0)
+  inStock   Boolean @default(true)
+  imageUrl  String?
+  tags      String[]
+  url       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([brand])
+  @@index([type])
+  @@index([cpuBrand])
+  @@index([gpuBrand])
+  @@index([ram])
+  @@index([storage])
+  @@index([price])
+  @@index([screen])
+  @@index([availability])
+  @@index([inStock])
+  @@index([rating])
+  @@index([popularity])
+  @@unique([brand, name])
+}

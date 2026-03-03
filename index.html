@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC & Laptop Search</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+</head>
+<body>
+  <header class="container">
+    <h1>PC & Laptop Search</h1>
+    <p class="subtitle">Search by CPU, RAM, storage, GPU, screen, and price.</p>
+  </header>
+
+  <main class="container">
+    <section class="search-panel">
+      <div class="field">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="e.g., i7 16gb rtx 4060 1tb" autocomplete="off" />
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="type">Type</label>
+          <select id="type">
+            <option value="">Any</option>
+            <option value="laptop">Laptop</option>
+            <option value="desktop">Desktop</option>
+            <option value="mini-pc">Mini PC</option>
+            <option value="all-in-one">All-in-one</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="cpu">CPU</label>
+          <select id="cpu">
+            <option value="">Any</option>
+            <option value="intel">Intel</option>
+            <option value="amd">AMD</option>
+            <option value="apple">Apple</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="ram">RAM (GB)</label>
+          <select id="ram">
+            <option value="">Any</option>
+            <option value="8">8+</option>
+            <option value="16">16+</option>
+            <option value="32">32+</option>
+            <option value="64">64+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="storage">Storage (GB)</label>
+          <select id="storage">
+            <option value="">Any</option>
+            <option value="256">256+</option>
+            <option value="512">512+</option>
+            <option value="1024">1TB+</option>
+            <option value="2048">2TB+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="gpu">GPU</label>
+          <select id="gpu">
+            <option value="">Any</option>
+            <option value="integrated">Integrated</option>
+            <option value="nvidia">NVIDIA</option>
+            <option value="amd">AMD</option>
+            <option value="apple">Apple</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="screen">Screen (in)
+          </label>
+          <select id="screen">
+            <option value="">Any</option>
+            <option value="13">13+</option>
+            <option value="14">14+</option>
+            <option value="15">15+</option>
+            <option value="16">16+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="price">Max Price ($)</label>
+          <input id="price" type="number" min="0" step="50" placeholder="e.g., 1200" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="clear">Clear Filters</button>
+        <span id="count">0 results</span>
+      </div>
+    </section>
+
+    <section>
+      <div id="results" class="results"></div>
+      <div id="empty" class="empty hidden">No matches. Try relaxing filters.</div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@6.3.0/dist/umd/index.min.js" integrity="sha384-Z0b8h8G1xTF2anEx1z3nq5c+2v9hE3M1DYi8yR7Gzffm2Z7nZj1me+9HhX2dcbW6" crossorigin="anonymous"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

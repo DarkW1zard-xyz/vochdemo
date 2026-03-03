@@ -1,0 +1,6 @@
+{
+  "typescript.tsserver.exclude": [
+    "node_modules/**"
+  ],
+  "javascript.validate.enable": false
+}

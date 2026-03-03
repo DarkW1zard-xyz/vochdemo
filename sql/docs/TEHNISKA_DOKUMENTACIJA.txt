@@ -1,0 +1,111 @@
+E‑komercijas produktu meklēšanas sistēma — Tehniskā dokumentācija
+
+Projekts: PC & Laptop Search System (pielāgots e‑komercijas prasībām)
+Autors: Darkwizard
+Datums: 2026-02-12
+Versija: 1.0
+
+SATURA RĀDĪTĀJS
+1. Projekta pārskats
+2. Funkcionālās prasības
+3. Nefunkcionālās prasības
+4. Datu struktūra
+5. Algoritmi un pamatojums
+6. Kompleksitātes analīze
+7. Testēšana un novērtēšana
+8. Iesniegšanas prasības
+9. Vērtēšanas kritēriji (rubrikas atbilstība)
+
+1. PROJEKTA PĀRSKATS
+Mērķis: izveidot e‑komercijas produktu meklēšanas sistēmu ar ātru tekstu meklēšanu, filtriem, kārtošanu un auto‑complete. Sistēma ir vērsta uz 1000+ vienlaicīgām meklēšanām un p95 < 200 ms atbildes laiku.
+
+2. FUNKCIONĀLĀS PRASĪBAS
+2.1 Meklēšanas funkcionalitāte
+FR-01: Teksta meklēšana — algoritms meklē produktus pēc nosaukuma un apraksta.
+FR-02: Kategoriju filtrēšana — filtrēšana pēc kategorijām (elektronika, apģērbs, mājas preces u.c.).
+FR-03: Cenu diapazons — meklēšana noteiktā cenu intervālā.
+FR-04: Zīmolu filtrēšana — filtrēšana pēc zīmoliem.
+FR-05: Pieejamība — rādīt tikai noliktavā esošos produktus.
+
+2.2 Meklēšanas rezultātu kārtošana
+FR-06: Pēc relevances (noklusējuma).
+FR-07: Pēc cenas (augoši/dilstoši).
+FR-08: Pēc popularitātes/reitinga.
+FR-09: Pēc pievienošanas datuma.
+
+2.3 Auto‑complete
+FR-10: Piedāvā meklēšanas terminu pabeigšanu.
+FR-11: Rāda populārākos meklēšanas terminus.
+FR-12: Typo tolerance (kļūdu tolerance).
+
+3. NEFUNKCIONĀLĀS PRASĪBAS
+3.1 Veiktspēja
+NFR-01: Atbildes laiks ≤ 200 ms standarta meklēšanai.
+NFR-02: Caurlaides spēja ≥ 1000 vienlaicīgas meklēšanas.
+NFR-03: Mērogojamība līdz 1M+ produktiem.
+
+3.2 Pieejamība
+NFR-04: 99.9% pieejamība.
+NFR-05: Gracioza kļūdu apstrāde bez sistēmas sabrukšanas.
+
+3.3 Atmiņa un indekss
+NFR-06: RAM patēriņš ≤ 4GB uz 100K produktiem.
+NFR-07: Indeksa izmērs ≤ 150% no oriģinālo datu izmēra.
+
+3.4 Precizitāte
+NFR-08: Relevance — ≥ 85% lietotāju apmierinātība.
+NFR-09: Recall — ≥ 90% atbilstošu produktu atgriešana.
+
+4. DATU STRUKTŪRA
+Produkts:
+- id: unikāls identifikators
+- nosaukums: produkta nosaukums
+- apraksts: detalizēts apraksts
+- cena: cena eiro
+- kategorija: produkta kategorija
+- zīmols: produkta zīmols
+- pieejamība: boolean (true/false)
+- reitings: vidējais reitings (1–5)
+- pievienošanas_datums: produkta pievienošanas datums
+
+5. ALGORITMI UN PAMATOJUMS
+Izvēlētais risinājums:
+- Inverted index teksta meklēšanai (Meilisearch).
+- B‑Tree/B+Tree indeksācija cenu diapazoniem (SQL/Meilisearch filtrēšana).
+- Jaucējtabulas (kešatmiņa populāriem vaicājumiem — Redis).
+- Trie/koka struktūra auto‑complete (Meilisearch sugerences).
+
+Salīdzinājums ar alternatīvām:
+- Pilna SQL LIKE meklēšana ir lēnāka lieliem datiem.
+- Lineāra meklēšana O(n) nav piemērota 1M+ produktiem.
+- Inverted index + kešatmiņa nodrošina ātrāku atbildi.
+
+6. KOMPLEKSITĀTES ANALĪZE
+- Teksta meklēšana: O(k + r) (k = vaicājuma termini, r = rezultāti).
+- Filtrēšana pēc kategorijas/brand/pieejamības: O(log n) ar indeksiem.
+- Cenu diapazons: O(log n) ar B‑Tree/B+Tree indeksiem.
+- Auto‑complete: O(m) ar trie (m = prefiksa garums).
+
+7. TESTĒŠANA UN NOVĒRTĒŠANA
+Testa dati: vismaz 10K produktu (ideāli 100K).
+Veiktspējas tests: autocannon (100+ concurrent).
+Precizitātes novērtēšana: relevance un recall (manuāli vai ar testu komplektu).
+Rezultātu dokumentācija: p50/p95, caurlaides spēja, kļūdu īpatsvars.
+
+8. IESNIEGŠANAS PRASĪBAS
+- Algoritma implementācija izvēlētajā valodā.
+- Dokumentācija ar algoritma aprakstu un analīzi.
+- Testa rezultāti ar veiktspējas mērījumiem.
+
+9. VĒRTĒŠANAS KRITĒRIJI (RUBRIKAS ATBILSTĪBA)
+- Teksta meklēšana nosaukumos un aprakstos.
+- Kategoriju filtrēšana.
+- Cenu diapazona meklēšana.
+- Zīmolu filtrēšana.
+- Pieejamības statusa filtrēšana.
+- Kārtošana (relevance, cena, reitings, datums).
+- Auto‑complete un typo tolerance.
+- p95 < 200 ms, 1000+ concurrent.
+- 1M+ produktu mērogojamība.
+- RAM ≤ 4GB/100K, indekss ≤ 150%.
+- Koda kvalitāte, komentāri, testējamība.
