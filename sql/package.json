@@ -11,6 +11,9 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "tsx prisma/seed.ts",
     "search:index": "tsx src/scripts/index-products.ts",
+    "search:evaluate": "tsx src/scripts/evaluate-search.ts",
+    "benchmark:throughput": "tsx src/scripts/benchmark-throughput.ts",
+    "benchmark:resources": "tsx src/scripts/benchmark-resources.ts",
     "products:dedupe": "tsx src/scripts/dedupe-products.ts",
     "products:generate": "tsx src/scripts/generate-products.ts",
     "loadtest": "autocannon -c 100 -d 20 http://localhost:3000/api/products"

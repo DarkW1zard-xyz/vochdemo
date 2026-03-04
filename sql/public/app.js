@@ -85,7 +85,14 @@ const renderChips = () => {
   if (filters.category.value) chips.push({ key: "category", label: `Category: ${filters.category.value}` });
   if (filters.brand.value) chips.push({ key: "brand", label: `Brand: ${filters.brand.value}` });
   if (filters.type.value) chips.push({ key: "type", label: `Type: ${filters.type.value}` });
-  if (filters.availability.value) chips.push({ key: "availability", label: `Availability: ${filters.availability.value === "in_stock" ? "In stock" : "Out of stock"}` });
+  if (filters.availability.value) {
+    const availabilityLabel = filters.availability.value === "in_stock"
+      ? "In stock"
+      : filters.availability.value === "preorder"
+        ? "Preorder / Out of stock"
+        : "Out of stock";
+    chips.push({ key: "availability", label: `Availability: ${availabilityLabel}` });
+  }
   if (filters.cpu.value) chips.push({ key: "cpu", label: `CPU: ${filters.cpu.value}` });
   if (filters.gpu.value) chips.push({ key: "gpu", label: `GPU: ${filters.gpu.value}` });
   if (filters.ram.value) chips.push({ key: "ram", label: `RAM: ${filters.ram.value}+` });

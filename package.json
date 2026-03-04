@@ -1,0 +1,11 @@
+{
+  "name": "vochdemo-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "cd sql && npm run dev",
+    "build": "cd sql && npm run build",
+    "search:evaluate": "cd sql && npm run search:evaluate",
+    "benchmark:throughput": "cd sql && npm run benchmark:throughput",
+    "benchmark:resources": "cd sql && npm run benchmark:resources"
+  }
+}

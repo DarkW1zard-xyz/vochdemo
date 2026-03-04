@@ -32,17 +32,17 @@ app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
 app.use((req, res, next) => {
   const start = process.hrtime.bigint();
-  const originalEnd = res.end;
+  const originalEnd = res.end.bind(res);
 
-  res.end = function (...args) {
+  res.end = ((...args: Parameters<typeof originalEnd>) => {
     const end = process.hrtime.bigint();
     const ms = Number(end - start) / 1_000_000;
     if (!res.headersSent) {
       res.setHeader("X-Response-Time", `${ms.toFixed(2)}ms`);
     }
     recordLatency(ms);
-    return originalEnd.apply(this, args as Parameters<typeof originalEnd>);
-  } as typeof res.end;
+    return originalEnd(...args);
+  }) as typeof res.end;
 
   next();
 });

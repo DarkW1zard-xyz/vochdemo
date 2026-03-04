@@ -85,3 +85,24 @@ When MEILI_URL is set, product search uses Meilisearch first and falls back to S
 
 - Run a quick local load test:
   - npm run loadtest
+- Run algorithm benchmark + precision evaluation (writes report to docs/SEARCH_TEST_RESULTS.md):
+  - npm run search:evaluate
+- Run throughput benchmark (100 and 1000 concurrent):
+  - npm run benchmark:throughput
+- Run resource benchmark (DB size, memory, index-size when Meili available):
+  - npm run benchmark:resources
+
+## Algorithm report (LV)
+
+- Algorithm choice, alternatives, complexity analysis:
+  - docs/ALGORITMA_ANALIZE_UN_TESTI.md
+- Latest generated benchmark results:
+  - docs/SEARCH_TEST_RESULTS.md
+- Throughput and response-time results:
+  - docs/THROUGHPUT_RESULTS.md
+- Resource and index-size results:
+  - docs/RESOURCE_RESULTS.md
+- Rubric coverage matrix:
+  - docs/RUBRIKAS_ATBILSTIBA.md
+- Submission summary (ready-to-present):
+  - docs/IESNIEGUMA_KOPSAVILKUMS.md
