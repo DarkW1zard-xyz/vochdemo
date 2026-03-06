@@ -6,6 +6,10 @@
     "build": "cd sql && npm run build",
     "search:evaluate": "cd sql && npm run search:evaluate",
     "benchmark:throughput": "cd sql && npm run benchmark:throughput",
-    "benchmark:resources": "cd sql && npm run benchmark:resources"
+    "benchmark:resources": "cd sql && npm run benchmark:resources",
+    "presentation:generate": "node scripts/generate-presentation.mjs"
+  },
+  "devDependencies": {
+    "pptxgenjs": "^4.0.1"
   }
 }

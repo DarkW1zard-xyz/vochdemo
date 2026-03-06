@@ -1,6 +1,6 @@
 # Meklēšanas algoritma testēšanas rezultāti
 
-- Datums: 2026-03-04T11:27:09.596Z
+- Datums: 2026-03-06T11:39:48.845Z
 - Produktu skaits: 10024
 - Vaicājumu kopums: 10
 - Iterācijas uz vaicājumu: 20
@@ -10,7 +10,7 @@
 
 | Dzinējs | Mērījumu skaits | Avg (ms) | p50 (ms) | p95 (ms) | Max (ms) | Precision@10 |
 |---|---:|---:|---:|---:|---:|---:|
-| SQL | 200 | 7.37 | 4.47 | 39.39 | 40.91 | 0.90 |
+| SQL | 200 | 6.66 | 2.53 | 31.79 | 70.08 | 0.90 |
 
 ## Vaicājumu detalizācija
 
@@ -18,16 +18,16 @@
 
 | Vaicājums | Avg latency (ms) | Precision@10 |
 |---|---:|---:|
-| lenovo laptop | 5.55 | 1.00 |
-| dell desktop | 4.74 | 1.00 |
-| gaming nvidia | 4.25 | 1.00 |
-| intel i7 | 2.37 | 1.00 |
-| amd ryzen | 2.29 | 1.00 |
-| apple m3 | 2.27 | 1.00 |
-| office mini-pc | 5.44 | 1.00 |
-| asus laptop | 5.45 | 1.00 |
-| preorder | 38.89 | 0.00 |
-| electronics all-in-one | 2.47 | 1.00 |
+| lenovo laptop | 6.99 | 1.00 |
+| dell desktop | 4.87 | 1.00 |
+| gaming nvidia | 2.29 | 1.00 |
+| intel i7 | 1.96 | 1.00 |
+| amd ryzen | 2.32 | 1.00 |
+| apple m3 | 2.03 | 1.00 |
+| office mini-pc | 2.57 | 1.00 |
+| asus laptop | 5.04 | 1.00 |
+| preorder | 36.31 | 0.00 |
+| electronics all-in-one | 2.24 | 1.00 |
 
 ## Secinājums
 

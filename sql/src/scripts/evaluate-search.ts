@@ -126,13 +126,13 @@ const sqlSearch = async (query: string, topK: number): Promise<ProductDoc[]> => 
   if (tokens.length) {
     where.AND = tokens.map((token) => ({
       OR: [
-        { name: { contains: token, mode: "insensitive" } },
-        { description: { contains: token, mode: "insensitive" } },
-        { brand: { contains: token, mode: "insensitive" } },
-        { category: { contains: token, mode: "insensitive" } },
-        { type: { contains: token, mode: "insensitive" } },
-        { cpu: { contains: token, mode: "insensitive" } },
-        { gpu: { contains: token, mode: "insensitive" } }
+        { name: { contains: token } },
+        { description: { contains: token } },
+        { brand: { contains: token } },
+        { category: { contains: token } },
+        { type: { contains: token } },
+        { cpu: { contains: token } },
+        { gpu: { contains: token } }
       ]
     }));
   }

@@ -1,12 +1,12 @@
 # Caurlaides spējas un atbildes laika mērījumi
 
-- Datums: 2026-03-04T11:26:57.302Z
+- Datums: 2026-03-06T11:41:08.835Z
 - Bāzes URL: http://localhost:3000
 
 | Scenārijs | Concurrency | Ilgums (s) | Avg latency (ms) | p95 latency (ms) | Req/s | Total req | Errors | Timeouts |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| API search @100 concurrent | 100 | 15 | 35.38 | 103.00 | 2788.00 | 41818 | 0 | 0 |
-| API search @1000 concurrent | 1000 | 15 | 320.73 | 787.00 | 3093.34 | 46393 | 0 | 0 |
+| API search @100 concurrent | 100 | 15 | 31.42 | 52.00 | 3131.27 | 46959 | 0 | 0 |
+| API search @1000 concurrent | 1000 | 15 | 315.25 | 474.00 | 3137.80 | 47060 | 0 | 0 |
 
 ## Secinājumi
 

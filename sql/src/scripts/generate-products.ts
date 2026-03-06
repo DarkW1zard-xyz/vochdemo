@@ -79,8 +79,11 @@ const makeProduct = (index: number) => {
 };
 
 const main = async () => {
-  const products = Array.from({ length: COUNT }, (_, i) => makeProduct(i + 1));
-  await prisma.product.createMany({ data: products, skipDuplicates: true });
+  const products = Array.from({ length: COUNT }, (_, i) => {
+    const p = makeProduct(i + 1);
+    return { ...p, tags: JSON.stringify(p.tags) };
+  });
+  await prisma.product.createMany({ data: products });
   console.log(`Generated ${products.length} products.`);
 };
 

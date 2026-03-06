@@ -38,8 +38,8 @@ router.get("/suggest", async (req: Request, res: Response) => {
     const items = await prisma.product.findMany({
       where: {
         OR: [
-          { name: { contains: q, mode: "insensitive" } },
-          { name: { startsWith: q, mode: "insensitive" } }
+          { name: { contains: q } },
+          { name: { startsWith: q } }
         ]
       },
       take: 8,

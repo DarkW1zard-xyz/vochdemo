@@ -189,10 +189,10 @@ router.get("/", async (req: Request, res: Response) => {
       if (textTokens.length) {
         where.AND = textTokens.map((token) => ({
           OR: [
-            { name: { contains: token, mode: "insensitive" } },
-            { description: { contains: token, mode: "insensitive" } },
-            { cpu: { contains: token, mode: "insensitive" } },
-            { gpu: { contains: token, mode: "insensitive" } }
+            { name: { contains: token } },
+            { description: { contains: token } },
+            { cpu: { contains: token } },
+            { gpu: { contains: token } }
           ]
         }));
       }
@@ -217,7 +217,7 @@ router.get("/", async (req: Request, res: Response) => {
         prisma.product.count({ where })
       ]);
 
-      return { items, total, limit, offset };
+      return { items: items.map((item) => ({ ...item, tags: JSON.parse(item.tags) })), total, limit, offset };
     })();
 
     inFlightSearches.set(cacheKey, pendingSearch);

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -34,7 +34,7 @@ model Product {
   popularity Int    @default(0)
   inStock   Boolean @default(true)
   imageUrl  String?
-  tags      String[]
+  tags      String   @default("[]")
   url       String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

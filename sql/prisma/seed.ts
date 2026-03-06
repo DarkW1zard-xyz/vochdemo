@@ -460,7 +460,8 @@ const products = [
 
 const main = async () => {
   await prisma.product.deleteMany();
-  await prisma.product.createMany({ data: products, skipDuplicates: true });
+  const data = products.map((p) => ({ ...p, tags: JSON.stringify(p.tags) }));
+  await prisma.product.createMany({ data });
 };
 
 main()
