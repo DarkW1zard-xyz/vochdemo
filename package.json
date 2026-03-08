@@ -2,7 +2,8 @@
   "name": "vochdemo-workspace",
   "private": true,
   "scripts": {
-    "dev": "cd sql && npm run dev",
+    "dev": "npm run dev:setup && npm --prefix sql run dev",
+    "dev:setup": "npm --prefix sql install && npm --prefix sql run prisma:generate",
     "build": "cd sql && npm run build",
     "search:evaluate": "cd sql && npm run search:evaluate",
     "benchmark:throughput": "cd sql && npm run benchmark:throughput",
