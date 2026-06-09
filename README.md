@@ -11,6 +11,14 @@ Projektā tiek izmantota **Hibrīdā meklēšanas arhitektūra**, kas apvieno:
 1.  **Invertēto indeksu (Inverted Index)** ar Trie koku struktūru (realizēts caur *Meilisearch*) – teksta apstrādei.
 2.  **B-koku (B-Tree) indeksus** (realizēts relāciju datubāzē) – strukturēto datu filtrēšanai.
 
+**Izvēlētās tehnoloģijas:**
+1. Docker compose
+2. redis
+3. postegresql
+4. miliesearch
+5. node.js
+6. express.js
+   
 **Pamatojums:**
 *   **Funkcionālās prasības:** Sistēmai jāatrod produkti pat tad, ja lietotājs pieļauj drukas kļūdas (*Fuzzy search*). Invertētais indekss ir vienīgā struktūra, kas to nodrošina zibensātri, pretstatā standarta SQL vaicājumiem.
 *   **Nefunkcionālās prasības:** Lai apkalpotu 1M+ lietotājus, sistēma nedrīkst veikt pilnu tabulas skenēšanu (*Full Table Scan*). Invertētais indekss un B-koku filtri nodrošina, ka meklēšanas ātrums paliek stabils, neatkarīgi no datu apjoma pieauguma.
